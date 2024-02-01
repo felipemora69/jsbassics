@@ -1,3 +1,22 @@
+const validateInput = (inputId) => {
+    try {
+        const inputElement = document.getElementById(inputId);
+        const inputValue = parseFloat(inputElement.value);
+
+        if (isNaN(inputValue)) {
+            throw new Error("Please enter a valid number.");
+        }
+
+        //reset the border if it is correct
+        document.getElementById("error-message").textContent = "";
+        inputElement.style.border = "";
+    } catch (error) {
+        //set the border to red if an error occurs
+        document.getElementById("error-message").textContent = error.message;
+        document.getElementById(inputId).style.border = "2px solid red";
+    }
+};
+
 function addStyles() {
     //h1 element
     let h1 = document.createElement("h1");
@@ -21,9 +40,20 @@ function addSum() {
     let input1 = document.createElement("input");
     let input2 = document.createElement("input");
 
+    input1.id = "input1";
+    input2.id = "input2";
+
     // Create a button
     let addButton = document.createElement("button");
     addButton.textContent = "Calculate Sum";
+
+    //paragraph for displaying error messages   
+    let errorMessage = document.createElement("p");
+    errorMessage.id = "error-message";
+    errorMessage.style.color = "red";
+
+    let sumResult = document.createElement("p");
+    sumResult.id = "sum-result";
 
     // Styles
     input2.style.marginLeft = "10px";
@@ -31,8 +61,15 @@ function addSum() {
     input2.style.marginBottom = "10px";
     addButton.style.display = "block";
     
-    // Function to calculate and display the sum
-    addButton.addEventListener("click", function() {
+    //Validate input function
+    addButton.onclick = function () {
+        validateInput("input1");
+        validateInput("input2");
+        calcSum();
+    };
+
+    //display the sum
+    function calcSum() {
         // Get the values from the input elements
         let value1 = parseFloat(input1.value) || 0;
         let value2 = parseFloat(input2.value) || 0;
@@ -40,18 +77,28 @@ function addSum() {
         // Calculate the sum
         let sum = value1 + value2;
 
-        // Display the sum on the page
-        alert("Sum: " + sum);
-    });
+        if (!isNaN(sum)) {
+            // Display the sum on the p1
+            sumResult.textContent = "Sum: " + sum;
+
+            input1.value = "";
+            input2.value = "";
+        } else {
+
+            input1.value = "";
+            input2.value = "";
+        }
+    }
+    
 
     // Append the input elements and button to the body
     document.body.appendChild(input1);
     document.body.appendChild(input2);
     document.body.appendChild(addButton);
-}
+    document.body.appendChild(errorMessage);
+    document.body.appendChild(sumResult);
+};
 
 
 addStyles();
 addSum();
-
-
