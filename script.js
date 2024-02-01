@@ -28,11 +28,15 @@ function addStyles() {
     // Styles
     h1.style.textAlign = "center";
     h1.style.color = "#A9A9A9";
-    h1.style.fontFamily = "Arial, sans-serif";
     h1.style.fontSize = "60px";
 
     // Append the h1 element to the body
     document.body.appendChild(h1);
+
+    //Body styles
+    document.body.style.backgroundColor = "#5C8374";
+    document.body.style.color = "#fff";
+    document.body.style.fontFamily = "Arial, sans-serif";
 }
 
 function addSum() {
@@ -60,6 +64,9 @@ function addSum() {
     input1.style.marginBottom = "10px";
     input2.style.marginBottom = "10px";
     addButton.style.display = "block";
+    addButton.style.backgroundColor = "#183D3D";
+    addButton.style.color = "#fff";
+    addButton.style.padding = "10px 20px";
     
     //Validate input function
     addButton.onclick = function () {
