@@ -63,6 +63,10 @@ function addSum() {
     input2.style.marginLeft = "10px";
     input1.style.marginBottom = "10px";
     input2.style.marginBottom = "10px";
+    input1.style.padding = "10px 20px";
+    input2.style.padding = "10px 20px";
+    input1.style.fontSize = "15px";
+    input2.style.fontSize = "15px";
     addButton.style.display = "block";
     addButton.style.backgroundColor = "#183D3D";
     addButton.style.color = "#fff";
