@@ -37,6 +37,7 @@ function addStyles() {
     document.body.style.backgroundColor = "#5C8374";
     document.body.style.color = "#fff";
     document.body.style.fontFamily = "Arial, sans-serif";
+    
 }
 
 function addSum() {
